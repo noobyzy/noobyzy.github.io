@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Haojen</title>
+  <icon>https://www.gravatar.com/avatar/73d9f5e835e1fe3f26ab6aed46d01719</icon>
+  
+  <link href="http://noobyzy.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://noobyzy.github.io/"/>
+  <updated>2021-08-15T13:52:04.886Z</updated>
+  <id>http://noobyzy.github.io/</id>
+  
+  <author>
+    <name>Haojen Ma</name>
+    <email>HaojenMa@gmail.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>first_blog_test</title>
+    <link href="http://noobyzy.github.io/2021/08/15/first-blog-test/"/>
+    <id>http://noobyzy.github.io/2021/08/15/first-blog-test/</id>
+    <published>2021-08-15T13:52:03.000Z</published>
+    <updated>2021-08-15T13:52:04.886Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://noobyzy.github.io/2021/08/15/hello-world/"/>
+    <id>http://noobyzy.github.io/2021/08/15/hello-world/</id>
+    <published>2021-08-15T13:49:43.028Z</published>
+    <updated>2021-08-15T13:49:43.029Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
