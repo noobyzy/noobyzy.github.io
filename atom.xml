@@ -6,7 +6,7 @@
   <link href="http://noobyzy.github.io/atom.xml" rel="self"/>
   
   <link href="http://noobyzy.github.io/"/>
-  <updated>2021-08-15T13:52:04.886Z</updated>
+  <updated>2021-08-17T03:51:39.126Z</updated>
   <id>http://noobyzy.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Raspberry Pi 3 + Seafile 搭建私有云</title>
+    <link href="http://noobyzy.github.io/2021/08/17/2021-08-17-raspi-seafile/"/>
+    <id>http://noobyzy.github.io/2021/08/17/2021-08-17-raspi-seafile/</id>
+    <published>2021-08-17T03:22:41.000Z</published>
+    <updated>2021-08-17T03:51:39.126Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="http://noobyzy.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="记录" scheme="http://noobyzy.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="RasberryPi" scheme="http://noobyzy.github.io/tags/RasberryPi/"/>
+    
+    <category term="Seafile" scheme="http://noobyzy.github.io/tags/Seafile/"/>
+    
+    <category term="私有云" scheme="http://noobyzy.github.io/tags/%E7%A7%81%E6%9C%89%E4%BA%91/"/>
+    
+  </entry>
   
   <entry>
     <title>first_blog_test</title>
