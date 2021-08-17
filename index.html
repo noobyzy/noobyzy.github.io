@@ -205,8 +205,42 @@
 <li>两根网线</li>
 <li>一台电脑（Win10）</li>
 </ul>
-<h2 id="路由器安装"><a href="#路由器安装" class="headerlink" title="路由器安装"></a>路由器安装</h2><p>由于我自购了一个路由器（人傻钱多），第一步当然是安装路由器了</p>
- 
+<hr>
+<h2 id="路由器安装"><a href="#路由器安装" class="headerlink" title="路由器安装"></a>路由器安装</h2><p>由于我自购了一个路由器（人傻钱多），第一步当然是安装路由器了。接下来步骤和说明书上一致，不想看可以跳过。</p>
+<h3 id="连接路由器"><a href="#连接路由器" class="headerlink" title="连接路由器"></a>连接路由器</h3><ul>
+<li>一根网线连接<code>WAN口</code>和<code>网线接口</code></li>
+<li>连接路由器电源</li>
+<li>电脑通过无线连接来连接路由器（默认名称一般在路由器底部或背后）</li>
+<li>检查指示灯</li>
+</ul>
+<h3 id="设置路由器"><a href="#设置路由器" class="headerlink" title="设置路由器"></a>设置路由器</h3><p>注意要先关闭代理</p>
+<ul>
+<li>打开设置网址，TP-Link是<a href="tplogin.cn">tplogin.cn</a></li>
+<li>创建管理员密码</li>
+<li>上网设置，给我检测的是<code>自动获得IP地址</code>，注意是WAN口IP地址</li>
+<li>无线设置，设置2.4/5G频段，设置WIFI名称和密码</li>
+</ul>
+<p>以后管理连接该路由器的设备就可以在设置网址中进行了。</p>
+<hr>
+<h2 id="树莓派远程连接"><a href="#树莓派远程连接" class="headerlink" title="树莓派远程连接"></a>树莓派远程连接</h2><p>我们需要在电脑上远程连接树莓派，这里我选择的是<code>MobaXterm</code>。<a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">官网链接</a></p>
+<h3 id="树莓派连接路由器"><a href="#树莓派连接路由器" class="headerlink" title="树莓派连接路由器"></a>树莓派连接路由器</h3><ul>
+<li>树莓派连接电源线</li>
+<li>树莓派连接网线，网线另一端连接路由器的一个LAN口上</li>
+</ul>
+<h3 id="电脑SSH连接树莓派"><a href="#电脑SSH连接树莓派" class="headerlink" title="电脑SSH连接树莓派"></a>电脑SSH连接树莓派</h3><ul>
+<li>在<code>MobaXterm</code>中通过SSH连接树莓派，树莓派IP地址在 <a href="tplogin.cn">tplogin.cn</a> 可以看到</li>
+<li>当然我这边采用了RDP协议，因为我本身在树莓派中安装的系统是带图形界面的</li>
+</ul>
+<h3 id="树莓派设置静态IP"><a href="#树莓派设置静态IP" class="headerlink" title="树莓派设置静态IP"></a>树莓派设置静态IP</h3><p>这一部分是抄 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57202972">https://zhuanlan.zhihu.com/p/57202972</a> 的。我之前也看到过其他设置静态IP的方法，暂不清楚这个方法行不行得通。</p>
+<ul>
+<li><p>打开DHCP配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo nano /etc/dhcpcd.conf</span><br></pre></td></tr></table></figure></li>
+<li><p>在该文件中添加/修改以下几项</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#指定接口eth0</span></span><br><span class="line">interface eth0   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定静态IP， /24表示子网掩码为 255.255.255.0</span></span><br><span class="line">static ip_address=192.168.1.101/24</span><br><span class="line"></span><br><span class="line"><span class="comment"># 路由器/网关IP地址</span></span><br><span class="line">static routers=192.168.1.1</span><br></pre></td></tr></table></figure></li>
+<li><p>保存并关闭该文件，随后重启树莓派</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="挂载移动硬盘"><a href="#挂载移动硬盘" class="headerlink" title="挂载移动硬盘"></a>挂载移动硬盘</h2> 
       <!-- reward -->
       
     </div>
@@ -461,11 +495,6 @@
   <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
   <div class="reward-box">
     
-    
-    <div class="reward-item">
-      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
-      <span class="reward-type">微信</span>
-    </div>
     
   </div>
 </div>
