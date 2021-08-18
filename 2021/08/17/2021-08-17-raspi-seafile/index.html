@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">673</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -156,9 +156,89 @@
 <li><p>在该文件中添加/修改以下几项</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#指定接口eth0</span></span><br><span class="line">interface eth0   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定静态IP， /24表示子网掩码为 255.255.255.0</span></span><br><span class="line">static ip_address=192.168.1.101/24</span><br><span class="line"></span><br><span class="line"><span class="comment"># 路由器/网关IP地址</span></span><br><span class="line">static routers=192.168.1.1</span><br></pre></td></tr></table></figure></li>
 <li><p>保存并关闭该文件，随后重启树莓派</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo reboot</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="挂载移动硬盘"><a href="#挂载移动硬盘" class="headerlink" title="挂载移动硬盘"></a>挂载移动硬盘</h2> 
+<hr>
+<h2 id="挂载移动硬盘"><a href="#挂载移动硬盘" class="headerlink" title="挂载移动硬盘"></a>挂载移动硬盘</h2><ul>
+<li>连接移动硬盘至树莓派</li>
+<li>查看是否连接成功<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ df -hT</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>可以看到列表中出现了一行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Filesystem     Type      Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/sda1      fuseblk   932G  148M  932G   1% /media/root/Seagate Portable Drive</span><br></pre></td></tr></table></figure>
+<p>我们看到这边硬盘格式是<code>fuseblk</code>，据<a target="_blank" rel="noopener" href="https://ubuntuforums.org/showthread.php?t=1096841">某论坛</a>, 我们暂且认为<br>这边<code>fuseblk == NTFS</code>。</p>
+<h3 id="挂载硬盘"><a href="#挂载硬盘" class="headerlink" title="挂载硬盘"></a>挂载硬盘</h3><ul>
+<li>挂载硬盘<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo mkdir /home/pi/seagate</span><br><span class="line">$ sudo mount /dev/sda1 /home/pi/seagate</span><br></pre></td></tr></table></figure>
+如果在挂载时出现如下错误<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Mount is denied because the NTFS volume is already exclusively opened.</span><br><span class="line">The volume may be already mounted, or another software may use it <span class="built_in">which</span></span><br><span class="line">could be identified <span class="keyword">for</span> example by the <span class="built_in">help</span> of the <span class="string">&#x27;fuser&#x27;</span> <span class="built_in">command</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ fuser -m /dev/sda1</span><br></pre></td></tr></table></figure>
+发现<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/sda1:            1425</span><br></pre></td></tr></table></figure>
+那就杀死TA！<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">kill</span> 1425</span><br></pre></td></tr></table></figure>
+再次进行<code>mount</code>操作</li>
+</ul>
+<h3 id="开机自动挂载"><a href="#开机自动挂载" class="headerlink" title="开机自动挂载"></a>开机自动挂载</h3><p>大佬说 NTFS 格式 Linux 不能直接读取（没有求证），下面解决这一问题。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57202972">参考网址</a></p>
+<ul>
+<li>安装NTFS格式可读写软件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get install ntfs-3g</span><br><span class="line">$ modprobe fuse</span><br></pre></td></tr></table></figure></li>
+<li>硬盘开机自动挂载<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
+并在最后一行添加<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/sda1 /home/pi/seagate fuseblk defaults,noexec,<span class="built_in">umask</span>=0000 0 0</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>Update!!</strong>: 昨晚临走的时候直接拔了树莓派电源。今天重新打开的时候，发现它进入了<code>emergency mode</code>。经过了一波搜索，我发现了<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/457477/systemd-booting-into-emergency-mode-with-error-dependency-failed-for-home">链接</a>问题比较相似。于是就把昨天添加的一行修改为</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/dev/sda1 /home/pi/seagate ntfs defaults,noexec,_netdev,<span class="built_in">umask</span>=0000 0 0</span><br></pre></td></tr></table></figure>
+<p><code>reboot</code>后开机成功</p>
+<hr>
+<h2 id="部署Seafile"><a href="#部署Seafile" class="headerlink" title="部署Seafile"></a>部署Seafile</h2><h3 id="安装seafile"><a href="#安装seafile" class="headerlink" title="安装seafile"></a>安装seafile</h3><ul>
+<li><p>更新源、安装python环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get upgrade</span><br><span class="line">$ sudo apt-get install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-urllib3 sqlite3 python-requests</span><br></pre></td></tr></table></figure></li>
+<li><p>下载安装包，可以在树莓派通过<code>wget</code>下载，也可以电脑下载后传到树莓派里。这边我选择后者</p>
+</li>
+<li><p>在github中下载了<code>seafile-server_7.0.5_stable_pi.tar.gz</code>。<a target="_blank" rel="noopener" href="https://github.com/haiwen/seafile-rpi/releases/tag/v7.0.5">链接</a></p>
+</li>
+<li><p>树莓派中在 <code>/home/pi/seafile</code>目录下解压</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tar -xzf seafile-server_7.0.5_stable_pi.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li><p>进行安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bash setup-seafile.sh</span><br></pre></td></tr></table></figure></li>
+<li><p>设置server信息</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"># 服务器名称</span><br><span class="line">[server name]: noobBran</span><br><span class="line"># 局域网内树莓派IP</span><br><span class="line">[This server<span class="string">&#x27;s ip or domain]: 192.168.1.101</span></span><br><span class="line"><span class="string"># 指定seafile数据存放位置，我们将其改到硬盘目录下</span></span><br><span class="line"><span class="string">[default: /home/pi/seafile/seafile-data ] /home/pi/seagate/seafile-data</span></span><br><span class="line"><span class="string"># seafile服务器端口号，使用默认8082</span></span><br><span class="line"><span class="string">[default: 8082 ] </span></span><br></pre></td></tr></table></figure>
+<p><strong>注意!!</strong>: 如果出现如下报错</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Failed to sync seafile database</span><br></pre></td></tr></table></figure>
+<p>在<code>setup-seafile.sh</code>中进行修改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- seafile_db=<span class="variable">$&#123;TOPDIR&#125;</span>/seafile-data/seafile.db <span class="comment">#删除这一行</span></span><br><span class="line">+ seafile_db=<span class="variable">$&#123;seafile_data_dir&#125;</span>/seafile.db <span class="comment">#添加这一行（没有前面 + 号）</span></span><br></pre></td></tr></table></figure>
+<p>随后重新安装即可。出现以下字样即安装成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-----------------------------------------------------------------</span><br><span class="line">Your seafile server configuration has been completed successfully.</span><br><span class="line">-----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">run seafile server:     ./seafile.sh &#123; start | stop | restart &#125;</span><br><span class="line">run seahub  server:     ./seahub.sh  &#123; start &lt;port&gt; | stop | restart &lt;port&gt; &#125;</span><br><span class="line"></span><br><span class="line">-----------------------------------------------------------------</span><br><span class="line">If the server is behind a firewall, remember to open these tcp ports:</span><br><span class="line">-----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">port of seafile fileserver:   8082</span><br><span class="line">port of seahub:               8000</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启seafile"><a href="#开启seafile" class="headerlink" title="开启seafile"></a>开启seafile</h3><ul>
+<li>开启服务<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash seafile.sh start &amp;&amp; bash seahub.sh start</span><br></pre></td></tr></table></figure>
+并配置管理员邮箱和密码</li>
+</ul>
+<p>打开浏览器并访问<code>http://localhost:8000</code></p>
+<ul>
+<li>设置开机自启动。在<code>seafile-server_7.0.5</code>目录下建一个<code>seafile_start.sh</code>。并填写<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo bash seafile.sh start</span><br><span class="line">sudo bash seahub.sh start</span><br></pre></td></tr></table></figure></li>
+<li>打开<code>/etc/rc.local</code>，在<code>exit 0</code>前添加<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo bash /home/pi/seafile/seafile-server_7.0.5/seafile_start.sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="seafile局域网访问失败"><a href="#seafile局域网访问失败" class="headerlink" title="seafile局域网访问失败"></a>seafile局域网访问失败</h3><ul>
+<li>目前其他机器通过局域网访问失败。下面解决这一问题</li>
+<li>打开<code>seafile/conf/gunicorn.conf</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- <span class="built_in">bind</span> = <span class="string">&quot;127.0.0.1:8000&quot;</span>  <span class="comment"># 删除这一行</span></span><br><span class="line">+ <span class="built_in">bind</span> = <span class="string">&quot;192.168.1.101:8000&quot;</span> <span class="comment"># 添加这一行</span></span><br></pre></td></tr></table></figure></li>
+<li>重启seafile<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo bash seafile.sh restart</span><br><span class="line">sudo bash seahub.sh restart</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="其他设备连接私有云"><a href="#其他设备连接私有云" class="headerlink" title="其他设备连接私有云"></a>其他设备连接私有云</h2><p>前提条件：同一局域网下</p>
+<ol>
+<li>浏览器输入<code>http://192.168.1.101:8000</code></li>
+<li>下载客户端。下载链接: <a target="_blank" rel="noopener" href="https://www.seafile.com/download/">https://www.seafile.com/download/</a></li>
+</ol>
+<h1 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h1><p><img src="/.io//seadrive1.png" alt="Win10挂载盘-1-外观"></p>
+<p><img src="/.io//seadrive2.png" alt="Win10挂载盘-2-内饰"></p>
+<p><img src="/.io//web_seadrive.png" alt="Win10浏览器访问"></p>
+<p><img src="/.io//web_seadrive.png" alt="Win10浏览器访问"></p>
+<p><img src="/.io//ipad.PNG" alt="Ipad客户端访问"></p>
+<p><img src="/.io//xiaomi.jpg" alt="小米手机访问"></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/windsnow1/article/details/96281071/">https://blog.csdn.net/windsnow1/article/details/96281071/</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1681154">https://cloud.tencent.com/developer/article/1681154</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57202972">https://zhuanlan.zhihu.com/p/57202972</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34178764/article/details/104404738?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.control&spm=1001.2101.3001.4242">https://blog.csdn.net/qq_34178764/article/details/104404738?utm_medium=distribute.pc_relevant.none-task-blog-2<del>default</del>baidujs_baidulandingword~default-0.control&amp;spm=1001.2101.3001.4242</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/windsnow1/article/details/96281071/">https://blog.csdn.net/windsnow1/article/details/96281071/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/kancloud/seafile-manual/51506">https://www.kancloud.cn/kancloud/seafile-manual/51506</a></p>
+ 
       <!-- reward -->
       
     </div>
