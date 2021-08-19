@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Raspberry Pi 3 + Seafile 搭建私有云</title>
+    <title>Raspberry Pi 4B + Seafile 搭建私有云</title>
     <url>/2021/08/17/2021-08-17-raspi-seafile/</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>这应该算是我第一篇正式blog，心情有点小激动。</p>
 <p>确定了研究生去向以后心情比较轻松，最近实验室压力也不大（我比较摸鱼），所以想捣鼓这些小东西。<br>之前花了几天时间建站，过两天应该会再更一个blog复盘建站的过程。</p>
@@ -9,7 +9,7 @@
 <hr>
 <hr>
 <h1 id="搭建经过"><a href="#搭建经过" class="headerlink" title="搭建经过"></a>搭建经过</h1><h2 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h2><ul>
-<li><code>Raspberry Pi 3</code>, 已安装 <code>Raspbian</code> 系统（及其电源线）</li>
+<li><code>Raspberry Pi 4B</code>, 已安装 <code>Raspbian GNU/Linux 10 (buster) armv7l</code> 系统（及其电源线）</li>
 <li><code>TP-Link AC1200</code> 路由器，型号 <code>TL-WDR5610</code>（及其电源线）</li>
 <li><code>Seagate SRD0NF1 1T</code> 移动硬盘 （及其数据线）</li>
 <li>两根网线</li>
