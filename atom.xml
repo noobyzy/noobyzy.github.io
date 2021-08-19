@@ -6,7 +6,7 @@
   <link href="http://noobyzy.github.io/atom.xml" rel="self"/>
   
   <link href="http://noobyzy.github.io/"/>
-  <updated>2021-08-19T02:28:54.077Z</updated>
+  <updated>2021-08-19T02:44:56.009Z</updated>
   <id>http://noobyzy.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://noobyzy.github.io/2021/08/17/2021-08-17-raspi-seafile/"/>
     <id>http://noobyzy.github.io/2021/08/17/2021-08-17-raspi-seafile/</id>
     <published>2021-08-17T03:22:41.000Z</published>
-    <updated>2021-08-19T02:28:54.077Z</updated>
+    <updated>2021-08-19T02:44:56.009Z</updated>
     
     
       
@@ -39,7 +39,7 @@
     <category term="记录" scheme="http://noobyzy.github.io/categories/%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="RasberryPi" scheme="http://noobyzy.github.io/tags/RasberryPi/"/>
+    <category term="RaspberryPi" scheme="http://noobyzy.github.io/tags/RaspberryPi/"/>
     
     <category term="Seafile" scheme="http://noobyzy.github.io/tags/Seafile/"/>
     
