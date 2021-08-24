@@ -6,7 +6,7 @@
   <link href="http://noobyzy.github.io/atom.xml" rel="self"/>
   
   <link href="http://noobyzy.github.io/"/>
-  <updated>2021-08-19T02:44:56.009Z</updated>
+  <updated>2021-08-24T04:33:03.092Z</updated>
   <id>http://noobyzy.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021-08-24-Notes</title>
+    <link href="http://noobyzy.github.io/2021/08/24/2021-08-24-Notes/"/>
+    <id>http://noobyzy.github.io/2021/08/24/2021-08-24-Notes/</id>
+    <published>2021-08-24T04:29:04.000Z</published>
+    <updated>2021-08-24T04:33:03.092Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文记录了我在学习机器学习、优化等方面看到的好的文章或博文，实时更新。一般直接附上原文链接。&lt;/p&gt;
+&lt;h1 id=&quot;机器学习&quot;&gt;&lt;a href=&quot;#机器学习&quot; class=&quot;headerlink&quot; title=&quot;机器学习&quot;&gt;&lt;/a&gt;机器学习&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="笔记" scheme="http://noobyzy.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="机器学习" scheme="http://noobyzy.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Raspberry Pi 4B + Seafile 搭建私有云</title>

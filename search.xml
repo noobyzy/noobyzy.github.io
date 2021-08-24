@@ -145,6 +145,26 @@
       </tags>
   </entry>
   <entry>
+    <title>2021-08-24-Notes</title>
+    <url>/2021/08/24/2021-08-24-Notes/</url>
+    <content><![CDATA[<p>本文记录了我在学习机器学习、优化等方面看到的好的文章或博文，实时更新。一般直接附上原文链接。</p>
+<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><ul>
+<li><p><a href="https://zhuanlan.zhihu.com/p/85731206">决策树（上）——ID3、C4.5、CART</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/86263786">决策树（中）——Random Forest、Adaboost、GBDT</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/87885678">决策树（下）——XGBoost、LightGBM</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>first_blog_test</title>
     <url>/2021/08/15/first-blog-test/</url>
     <content><![CDATA[]]></content>
