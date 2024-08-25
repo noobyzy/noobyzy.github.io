@@ -1,17 +1,17 @@
 # 侧边栏菜单
 menu:
-  主页: /
-  归档: /archives
-  分类: /categories
-  标签: /tags
-  关于我: /aboutme
+  主页 Homepage: /
+  关于我 About Me: /aboutme
+  归档 Archives: /archives
+  分类 Categories: /categories
+#  标签: /tags
   Github: https://github.com/noobyzy/
 
 # 站点次标题和打字动效
 # https://github.com/mattboldt/typed.js
 subtitle:
   enable: true # 是否开启动效
-  text: 越过山丘, 才发现无人等候 # 显示的文字
+  text: 看看世界给我是晴朗，还是雾 # 显示的文字
   text2:  # 滚动播放，如果不需要可以留空
   text3:  # 最多支持三段文字
   startDelay: 0 # 延迟时间
