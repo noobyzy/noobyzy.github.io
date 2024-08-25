@@ -6,7 +6,7 @@
   <link href="http://noobyzy.github.io/atom.xml" rel="self"/>
   
   <link href="http://noobyzy.github.io/"/>
-  <updated>2024-08-25T08:24:44.694Z</updated>
+  <updated>2024-08-25T09:26:47.325Z</updated>
   <id>http://noobyzy.github.io/</id>
   
   <author>
@@ -17,23 +17,26 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World -- Hexo Usage</title>
-    <link href="http://noobyzy.github.io/2024/08/25/hello-world/"/>
-    <id>http://noobyzy.github.io/2024/08/25/hello-world/</id>
-    <published>2024-08-25T07:45:36.385Z</published>
-    <updated>2024-08-25T08:24:44.694Z</updated>
+    <title>Projects</title>
+    <link href="http://noobyzy.github.io/2024/08/25/Projects/"/>
+    <id>http://noobyzy.github.io/2024/08/25/Projects/</id>
+    <published>2024-08-25T08:58:04.000Z</published>
+    <updated>2024-08-25T09:26:47.325Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+    <summary type="html">&lt;p&gt;In this post, I will record the projects I have done.&lt;/p&gt;
+&lt;h1 id=&quot;2023&quot;&gt;&lt;a href=&quot;#2023&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
+    
+    <category term="记录" scheme="http://noobyzy.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
