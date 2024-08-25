@@ -164,7 +164,7 @@
   </entry>
   <entry>
     <title>好文记录</title>
-    <url>/2021/08/24/2021-08-24-Notes/</url>
+    <url>/2024/08/25/2021-08-24-Notes/</url>
     <content><![CDATA[<p>本文记录了我在学习机器学习、优化、计算机算法等方面看到的好的文章或博文，实时更新。一般直接附上原文链接。</p>
 <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><ul>
 <li><a href="https://www.showmeai.tech/tutorials/34?articleId=185">图解机器学习</a></li>
@@ -177,16 +177,19 @@
 <li><p><a href="https://zhuanlan.zhihu.com/p/87885678">决策树（下）——XGBoost、LightGBM</a></p>
 </li>
 </ul>
+<hr>
 <h1 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h1><h2 id="Neural-Tangent-Kernal"><a href="#Neural-Tangent-Kernal" class="headerlink" title="Neural Tangent Kernal"></a>Neural Tangent Kernal</h2><ul>
 <li><p><a href="https://rajatvd.github.io/NTK/">Understanding the Neural Tangent Kernel</a></p>
 </li>
 <li><p><a href="https://lilianweng.github.io/posts/2022-09-08-ntk/">Some Math behind Neural Tangent Kernel</a></p>
 </li>
 </ul>
+<hr>
 <h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h2 id="凸优化"><a href="#凸优化" class="headerlink" title="凸优化"></a>凸优化</h2><ul>
 <li><a href="https://xingyuzhou.org/blog/notes/strong-convexity">Strong convexity</a></li>
 <li><a href="https://xingyuzhou.org/blog/notes/Lipschitz-gradient">Lipschitz continuous gradient</a></li>
 </ul>
+<hr>
 <h1 id="计算机算法"><a href="#计算机算法" class="headerlink" title="计算机算法"></a>计算机算法</h1><h2 id="算法讲解网站"><a href="#算法讲解网站" class="headerlink" title="算法讲解网站"></a>算法讲解网站</h2><ul>
 <li><p><a href="https://oi-wiki.org/">OI Wiki</a>: 编程竞赛知识整合，比较详细，适合耐心看。</p>
 </li>
