@@ -3,6 +3,8 @@ title: About Me
 date: 2021-08-16 18:23:55
 ---
 
+Check some of my projects in the following blog: {% post_link Projects %}
+
 ## Education
 
 ### University of Science and Technology of China - Hefei, Anhui
@@ -25,5 +27,5 @@ date: 2021-08-16 18:23:55
 {% pdf /aboutme/resume_20240825_ch.pdf %}
 
 
-Check some of my projects here: {% post_link Projects %}
+
 
